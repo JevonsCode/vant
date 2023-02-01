@@ -185,18 +185,18 @@ export default createComponent({
     },
 
     scrollTo(index) {
-      const match = this.children.filter(
+      const match = this.children.find(
         (item) => String(item.index) === index
       );
 
-      if (match[0]) {
-        match[0].scrollIntoView();
+      if (match) {
+        match.scrollIntoView();
 
         if (this.sticky && this.stickyOffsetTop) {
           setRootScrollTop(getRootScrollTop() - this.stickyOffsetTop);
         }
 
-        this.$emit('select', match[0].index);
+        this.$emit('select', match.index);
       }
     },
 
